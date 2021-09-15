@@ -6,8 +6,8 @@ class SynapticConstants:
         self.gampa = np.zeros(nr_excit)
         self.gaba = np.zeros(nr_inhibit)
 
-        self.decay_ampa = 1
+        self.decay_ampa = 1.0
         self.rise_ampa = 0.1
 
-        self.decay_gaba = 4
+        self.decay_gaba = 4.0
         self.rise_gaba = 0.1
