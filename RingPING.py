@@ -28,6 +28,9 @@ class RingPING:
         # initial values of u = membrane recovery variable
         self.u = np.multiply(self.b, self.v)
 
+        # spike timings
+        self.firings = []
+
         # spike times
         self.simulation_time = simulation_time
         self.dt = dt
@@ -56,8 +59,6 @@ class RingPING:
     def run(self):
         print("Simulation started")
 
-        firings = []
-
         for t in tqdm(range(self.simulation_time)):
 
             # thalamic input
@@ -65,7 +66,7 @@ class RingPING:
 
             # indices of spikes
             fired = np.argwhere(self.v > 30).flatten()
-            firings = [firings, [t for _ in range(len(fired))] + fired]
+            self.firings = [self.firings, [t for _ in range(len(fired))] + fired]
             for f in fired:
                 self.v[f] = self.c[f]
                 self.u[f] += self.d[f]
