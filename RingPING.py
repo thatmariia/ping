@@ -3,6 +3,7 @@ from SynapticConstants import *
 from ConnectivityMatrix import *
 from misc import *
 
+from tqdm import tqdm
 import numpy as np
 from math import pi
 
@@ -54,11 +55,10 @@ class RingPING:
 
     def run(self):
         print("Simulation started")
+
         firings = []
 
-        for t in range(self.simulation_time):
-            if t % 25 == 0:
-                print("{}/{} ms".format(t, self.simulation_time))
+        for t in tqdm(range(self.simulation_time)):
 
             # thalamic input
             I = self._get_new_thalamic_input()
