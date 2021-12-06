@@ -3,7 +3,7 @@ from math import pi, exp
 import cmath
 from misc import *
 
-class ConnectivityMatrix():
+class ConnectivityMatrixRing():
 
     def __init__(self, nr_neurons, nr_excit, nr_inhibit):
         # excitatory  to excitatory

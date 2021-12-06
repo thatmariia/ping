@@ -1,15 +1,17 @@
 from GaussianInput import *
 from SynapticConstants import *
-from ConnectivityMatrix import *
+from ConnectivityMatrixRing import *
+from ConnectivityMatrixGrid import *
+from PINGTypes import *
 from misc import *
 
 from tqdm import tqdm
 import numpy as np
 from math import pi
 
-class RingPING:
+class PING:
 
-    def __init__(self, nr_excit, nr_inhibit, simulation_time, dt):
+    def __init__(self, nr_excit, nr_inhibit, simulation_time, dt, ping_type):
         self.nr_excit = nr_excit
         self.nr_inhibit = nr_inhibit
         self.nr_neurons = self.nr_excit + self.nr_inhibit
@@ -50,11 +52,18 @@ class RingPING:
         )
 
         # connectivity matrix
-        self.connect_matrix = ConnectivityMatrix(
-            nr_neurons=self.nr_neurons,
-            nr_excit=self.nr_excit,
-            nr_inhibit=self.nr_inhibit
-        )
+        if ping_type == PINGTypes.RING:
+            self.connect_matrix = ConnectivityMatrixRing(
+                nr_neurons=self.nr_neurons,
+                nr_excit=self.nr_excit,
+                nr_inhibit=self.nr_inhibit
+            )
+        if ping_type == PINGTypes.GRID:
+            self.connect_matrix = ConnectivityMatrixGrid(
+                nr_neurons=self.nr_neurons,
+                nr_excit=self.nr_excit,
+                nr_inhibit=self.nr_inhibit
+            )
 
     def run(self):
         print("Simulation started")
