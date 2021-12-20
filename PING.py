@@ -11,9 +11,10 @@ from math import pi
 
 class PING:
 
-    def __init__(self, nr_excit, nr_inhibit, simulation_time, dt, ping_type):
+    def __init__(self, simulation_time, dt, ping_type, nr_excit, nr_inhibit, nr_oscillators=0):
         self.nr_excit = nr_excit
         self.nr_inhibit = nr_inhibit
+        self.nr_oscillators = nr_oscillators
         self.nr_neurons = self.nr_excit + self.nr_inhibit
 
         # timescale of recover variable u

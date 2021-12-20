@@ -6,7 +6,10 @@ from misc import *
 # TODO:: change computations from ring to grid
 class ConnectivityMatrixGrid():
 
-    def __init__(self, nr_neurons, nr_excit, nr_inhibit):
+    def __init__(self, nr_neurons, nr_excit, nr_inhibit, nr_oscillators):
+
+        self.nr_oscillators = nr_oscillators
+
         # excitatory  to excitatory
         self.EE = 0.004
         self.sEE = 0.4
@@ -47,6 +50,7 @@ class ConnectivityMatrixGrid():
             op1=self._get_op(nr=nr_excit),
             op2=self._get_op(nr=nr_excit)
         )
+
         dist_II = self._get_dist(
             nr1=nr_inhibit,
             nr2=nr_inhibit,
@@ -83,6 +87,7 @@ class ConnectivityMatrixGrid():
     def _get_dist(self, nr1, nr2, op1, op2):
         dist = np.zeros((nr1, nr2))
 
+
         for i in range(nr1):
             zs_nom = [cmath.exp(complex(real=0.0, imag=op1[i]))] * len(op2)
             zs_denom = [cmath.exp(complex(real=0.0, imag=j)) for j in op2]
@@ -90,7 +95,9 @@ class ConnectivityMatrixGrid():
             angles = abs(np.angle(z=zs))
             dist[i] = angles
 
+        print("dist -", dist.shape, dist)
         dist[dist < 0.001] = None
+
         return dist
 
 
