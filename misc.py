@@ -1,4 +1,10 @@
 import numpy as np
+import math
+
+def euclidian_dist_R2(x, y):
+    return math.sqrt(
+        pow(x, 2) + pow(y, 2)
+    )
 
 def cust_range(*args, rtol=1e-05, atol=1e-08, include=[True, False]):
     """

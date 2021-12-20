@@ -8,8 +8,8 @@ if __name__ == "__main__":
     #     simulation_time=8,
     #     dt=1,
     #     ping_type=PINGTypes.RING,
-    #     nr_excit = 4,
-    #     nr_inhibit = 2,
+    #     nr_excit=4,
+    #     nr_inhibit=2,
     # )
     # ringPING.run()
 
@@ -17,9 +17,9 @@ if __name__ == "__main__":
         simulation_time=8,
         dt=1,
         ping_type=PINGTypes.GRID,
-        nr_excit=4,
-        nr_inhibit=2,
-        nr_oscillators = 2
+        nr_excit=8,
+        nr_inhibit=4,
+        nr_oscillators=4
     )
-    gridPING.run()
+    # gridPING.run()
 
